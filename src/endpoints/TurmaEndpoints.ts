@@ -60,6 +60,22 @@ class TurmaEndpoints {
       res.status(errorCode).send({message: error.message} || {message: error.sqlMessage})
     }
   }
+
+
+  async buscarTurmasAtivas(req: Request, res: Response) {
+    let errorCode: number = 400
+
+    try {
+      const turmaDatabase = new TurmaDatabase()
+
+      let resultado: Turma[] = await turmaDatabase.selectTurmasAtivas()
+
+      res.status(200).send(resultado)
+
+    } catch (error: any) {
+      res.status(errorCode).send({message: error.message} || {message: error.sqlMessage})
+    }
+  }
 }
 
 export default TurmaEndpoints

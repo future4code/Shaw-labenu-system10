@@ -20,6 +20,13 @@ export class TurmaDatabase extends BaseDatabase {
       .where({id: id})
       .update({modulo: modulo})
   }
-}
 
-// .whereNot({id: id})
+  async selectTurmasAtivas(): Promise<Turma[]> {
+    
+    const resultado = await BaseDatabase.connection("TURMA")
+      .select("*")
+      .whereNot({modulo: "0"})
+
+      return resultado
+  }
+}

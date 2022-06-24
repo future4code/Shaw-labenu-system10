@@ -3,6 +3,8 @@ import TurmaEndpoints from "./endpoints/TurmaEndpoints"
 
 const turmaEndpoints = new TurmaEndpoints
 
-app.post("/turma", turmaEndpoints.criarTurma)
+app.post("/turmas", turmaEndpoints.criarTurma)
 
-app.put("/turma/:id", turmaEndpoints.mudarTurmaDeModulo)
+app.put("/turmas/:id", turmaEndpoints.mudarTurmaDeModulo)
+
+app.get("/turmas/ativas", turmaEndpoints.buscarTurmasAtivas)
