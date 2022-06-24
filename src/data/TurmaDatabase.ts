@@ -13,4 +13,13 @@ export class TurmaDatabase extends BaseDatabase {
       })
       .into("TURMA")
   }
+
+  async updateModuloDaTurma(id: string, modulo: string): Promise<void> {
+
+    await BaseDatabase.connection("TURMA")
+      .where({id: id})
+      .update({modulo: modulo})
+  }
 }
+
+// .whereNot({id: id})
